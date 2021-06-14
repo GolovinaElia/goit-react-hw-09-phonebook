@@ -1,0 +1,18 @@
+.contacts {
+  margin: auto;
+  max-width: 500px;
+  text-align: start;
+  font-weight: 500;
+}
+
+.contactsForm {
+  display: flex;
+  align-items: baseline;
+}
+
+.button {
+  width: 75px;
+  height: 25px;
+  margin: 20px;
+  font-size: small;
+}
