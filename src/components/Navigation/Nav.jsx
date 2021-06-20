@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 import style from './Navigation.module.css';
 import { authSelectors } from '../../redux/auth';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const Nav = ({ isAuthenticated }) => {
+export default function Nav() {
+  const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
   return (
     <nav className={style.itemLink}>
       <NavLink
@@ -16,7 +16,7 @@ const Nav = ({ isAuthenticated }) => {
       >
         Home
       </NavLink>
-      {isAuthenticated && (
+      {isLoggedIn && (
         <nav className={style.itemLink}>
           <NavLink
             to={routes.contactsView}
@@ -29,14 +29,4 @@ const Nav = ({ isAuthenticated }) => {
       )}
     </nav>
   );
-};
-
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
-
-Nav.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-};
-
-export default connect(mapStateToProps)(Nav);
+}
